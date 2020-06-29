@@ -1,0 +1,64 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}User List{% endblock %}
+
+{% block body %}
+
+<SCRIPT LANGUAGE="JavaScript" type="text/javascript">
+    function openWin( windowURL, windowName, windowFeatures ) {   window.open( windowURL, windowName, windowFeatures ) ; }
+</SCRIPT>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-3">
+                    <a href="{{ path('admin_user_new') }}" class="btn btn-block btn-info" >Create New User</a>
+                </div><br>
+                <div class="table-responsive">
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Roles</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Image</th>
+                            <th>Status</th>
+                            <th>actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.surname }}</td>
+                                <td><img src="{{ asset('uploads') }}/images/{{ user.image }}" ></td>
+                                <td>{{ user.status }}</td>
+                                <td>
+                                    <a class="btn btn-block btn-info" href="{{ path('admin_user_show', {'id': user.id}) }}">show</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-block btn-info" href="{{ path('admin_user_edit', {'id': user.id}) }}">edit</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="11">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+

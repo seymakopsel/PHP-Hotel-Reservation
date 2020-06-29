@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Star Admin | Log in</title>
+    <link rel="stylesheet" href="{{ asset('assets') }}/admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/admin/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/admin/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/admin/css/style.css">
+    <link rel="shortcut icon" href="{{ asset('assets') }}/admin/images/favicon.png" />
+
+</head>
+
+<body>
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+        <div class="content-wrapper d-flex align-items-center auth register-bg-1 theme-one">
+            <div class="row w-100">
+                <div class="col-lg-6 mx-auto">
+                    <h2 class="text-center mb-4">Register</h2>
+                    <div class="auto-form-wrapper">
+
+                                <p class="login-box-msg">Register a new membership</p>
+
+                                {{ form_start(registrationForm) }}
+
+                                {{ form_widget(registrationForm) }}
+                                <div class="col-md-5">
+
+                                    <button type="submit" class="btn btn-lg btn-primary">Register</button>
+                                </div>
+
+                                {{ form_end(registrationForm) }}
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+        </div>
+
+
+        <!-- container-scroller -->
+        <!-- plugins:js -->
+        <script src="{{ asset('assets') }}/admin/vendors/js/vendor.bundle.base.js"></script>
+        <script src="{{ asset('assets') }}/admin/vendors/js/vendor.bundle.addons.js"></script>
+        <script src="{{ asset('assets') }}/admin/js/off-canvas.js"></script>
+        <script src="{{ asset('assets') }}/admin/js/misc.js"></script>
+
+</body>
+
+</html>
+
+
+

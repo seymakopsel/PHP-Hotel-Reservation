@@ -1,0 +1,22 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Comment Edit{% endblock %}
+
+{% block body  %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <h1>Edit Comment</h1>
+
+                {{ include('admin/comment/_form.html.twig', {'button_label': 'Update'}) }}<br>
+
+                {{ include('admin/comment/_delete_form.html.twig') }}
+
+                <a href="{{ path('admin_comment_index') }}">back to list</a>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

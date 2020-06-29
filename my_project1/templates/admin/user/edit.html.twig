@@ -1,0 +1,29 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}User Home Page{% endblock %}
+
+{% block body %}
+
+<SCRIPT LANGUAGE="JavaScript" type="text/javascript">
+    function openWin( windowURL, windowName, windowFeatures ) {   window.open( windowURL, windowName, windowFeatures ) ; }
+</SCRIPT>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+
+                    <h1>Edit User</h1><br>
+
+                        {{ include('admin/user/_form.html.twig', {'button_label': 'Update'}) }}
+                    <br>
+
+                        {{ include('admin/user/_delete_form.html.twig') }}
+                    <br>
+                        <a class="btn btn-default btn-flat" href="{{ path('admin_hotel_index') }}">Back To List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Star Admin | Log in</title>
+    <link rel="stylesheet" href="{{ asset('assets') }}/admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/admin/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/admin/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/admin/css/style.css">
+    <link rel="shortcut icon" href="{{ asset('assets') }}/admin/images/favicon.png" />
+
+</head>
+
+<body>
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+        <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+            <div class="row w-100">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auto-form-wrapper">
+
+                        <form method="post">
+                            {% if error %}
+                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+
+                            {% if app.user %}
+                                <div class="mb-3">
+                                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                </div>
+                            {% endif %}
+
+                            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                            <label for="inputEmail">Email</label>
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+                            <label for="inputPassword">Password</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+                            <input type="hidden" name="_csrf_token"
+                                   value="{{ csrf_token('authenticate') }}"
+                            >
+
+                            {#
+                                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                                See https://symfony.com/doc/current/security/remember_me.html
+
+                                <div class="checkbox mb-3">
+                                    <label>
+                                        <input type="checkbox" name="_remember_me"> Remember me
+                                    </label>
+                                </div>
+                            #}
+                            <br>
+                            <button class="btn btn-lg btn-primary" type="submit">
+                                Sign in
+                            </button>
+                        </form>
+                    </div>
+                    <ul class="auth-footer">
+                        <li>
+                            <a href="#">Conditions</a>
+                        </li>
+                        <li>
+                            <a href="#">Help</a>
+                        </li>
+                        <li>
+                            <a href="#">Terms</a>
+                        </li>
+                    </ul>
+                    <p class="footer-text text-center">copyright © 2018 Bootstrapdash. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<script src="{{ asset('assets') }}/admin/vendors/js/vendor.bundle.base.js"></script>
+<script src="{{ asset('assets') }}/admin/vendors/js/vendor.bundle.addons.js"></script>
+<script src="{{ asset('assets') }}/admin/js/off-canvas.js"></script>
+<script src="{{ asset('assets') }}/admin/js/misc.js"></script>
+
+</body>
+
+</html>
+

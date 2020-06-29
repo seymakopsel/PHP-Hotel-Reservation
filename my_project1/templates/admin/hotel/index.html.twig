@@ -1,0 +1,76 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Hotel Home Page{% endblock %}
+
+{% block body %}
+
+<SCRIPT LANGUAGE="JavaScript" type="text/javascript">
+    function openWin( windowURL, windowName, windowFeatures ) {   window.open( windowURL, windowName, windowFeatures ) ; }
+</SCRIPT>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-3">
+                    <a href="{{ path('admin_hotel_new') }}" class="btn btn-block btn-info" >Create New Hotel</a>
+                </div><br>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Image</th>
+                            <th>Star</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>City</th>
+                            <th>User</th>
+                            <th>Gallery</th>
+                            <th>Rooms</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for hotel in hotels %}
+                            <tr>
+                                <td>{{ hotel.id }}</td>
+                                <td>{{ hotel.catname }}</td>
+                                <td><img src="{{ asset('uploads') }}/images/{{ hotel.image }}" ></td>
+                                <td>{{ hotel.star }}</td>
+                                <td>{{ hotel.phone }}</td>
+                                <td>{{ hotel.email }}</td>
+                                <td>{{ hotel.city }}</td>
+                                <td><a  href="{{ path('admin_user_show', {'id': hotel.userid}) }}">{{ hotel.name }} {{ hotel.surname }}</td>
+                                <td>
+                                    <a href="javascript:openWin('{{ path('admin_image_new' , {'id': hotel.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=50,left=100,menuBar=no,scrollBars=yes,resizable=no,width=900,height=600');">
+                                        <img src="{{ asset('assets/admin/images') }}/gallery.png" height="40" title="Image Gallery">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="javascript:openWin('{{ path('admin_room_new' , {'id': hotel.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=50,left=100,menuBar=no,scrollBars=yes,resizable=no,width=900,height=600');">
+                                        <img src="{{ asset('assets/admin/images') }}/bed.png" height="40" title="Room">
+                                    </a>
+                                </td>
+                                <td>{{ hotel.status }}</td>
+                                <td>
+                                    <a class="btn btn-block btn-info" href="{{ path('admin_hotel_show', {'id': hotel.id}) }}">show</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-block btn-info" href="{{ path('admin_hotel_edit', {'id': hotel.id}) }}">edit</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="17">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

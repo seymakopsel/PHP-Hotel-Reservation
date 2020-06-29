@@ -1,0 +1,66 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Reservation Home Page{% endblock %}
+
+{% block body  %}
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Reservation İndex</h4>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Userid</th>
+                                <th>Hotelid</th>
+                                <th>Roomid</th>
+                                <th>Name</th>
+                                <th>Surname</th>
+                                <th>Checkin</th>
+                                <th>Checkout</th>
+                                <th>Days</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for reservation in reservations %}
+                                <tr>
+                                    <td><a  href="{{ path('admin_user_show', {'id': reservation.userid}) }}">
+                                            {{ reservation.uname }}
+                                        </a>
+                                    </td>
+                                    <td><a  href="{{ path('admin_hotel_show', {'id': reservation.hotelid}) }}">
+                                            {{ reservation.hname }}
+                                        </a>
+                                    </td>
+                                    <td>{{ reservation.rname }}</td>
+                                    <td>{{ reservation.name }}</td>
+                                    <td>{{ reservation.surname }}</td>
+                                    <td>{{ reservation.checkin ? reservation.checkin|date('d-m-Y') : '' }}</td>
+                                    <td>{{ reservation.checkout ? reservation.checkout|date('d-m-Y') : '' }}</td>
+                                    <td>{{ reservation.days }}</td>
+                                    <td>{{ reservation.total }}</td>
+                                    <td>{{ reservation.status }}</td>
+                                    <td>
+                                        <a class="btn btn-block btn-info" href="{{ path('admin_reservation_show', {'id': reservation.id}) }}">show</a>
+                                        <a class="btn btn-block btn-info" href="{{ path('admin_reservation_edit', {'id': reservation.id}) }}">edit</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="19">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

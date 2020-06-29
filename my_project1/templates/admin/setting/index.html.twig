@@ -1,0 +1,49 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Setting index{% endblock %}
+
+{% block body %}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-3">
+                    <a class="btn btn-block btn-info" href="{{ path('setting_new') }}">Create New Setting</a>
+                </div><br>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Company</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for setting in settings %}
+                        <tr>
+                            <td>{{ setting.id }}</td>
+                            <td>{{ setting.title }}</td>
+                            <td>{{ setting.company }}</td>
+                            <td>{{ setting.email }}</td>
+                            <td>{{ setting.status }}</td>
+                            <td>
+                                <a class="btn btn-block btn-info" href="{{ path('setting_show', {'id': setting.id}) }}">show</a>
+                                <a class="btn btn-block btn-info" href="{{ path('setting_edit', {'id': setting.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="21">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+        {% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}
+
+<SCRIPT LANGUAGE="JavaScript" type="text/javascript">
+    function openWin( windowURL, windowName, windowFeatures ) {   window.open( windowURL, windowName, windowFeatures ) ; }
+</SCRIPT>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-3">
+                    <a  class="btn btn-block btn-info" > New User</a>
+                </div><br>
+                {{ include('admin/user/_form.html.twig') }}<br>
+
+                <a href="{{ path('admin_user_index') }}">back to list</a>
+
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

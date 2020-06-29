@@ -1,0 +1,73 @@
+
+<link rel="stylesheet" href="{{ asset('assets') }}/admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="{{ asset('assets') }}/admin/vendors/css/vendor.bundle.base.css">
+<link rel="stylesheet" href="{{ asset('assets') }}/admin/vendors/css/vendor.bundle.addons.css">
+<link rel="stylesheet" href="{{ asset('assets') }}/admin/css/style.css">
+<link rel="shortcut icon" href="{{ asset('assets') }}/admin/images/favicon.png" />
+
+<form role="form" name="image" action="{{ path('admin_image_new', {'id': id}) }}" method="post"enctype="multipart/form-data">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">
+                <label for="exampleInputName1">Title</label>
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="image_title" name="image[title]" maxlength="50">
+                <input type="hidden" class="form-control" id="image_hotel" name="image[hotel]" value="{{ id }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="exampleInputName1">Gallery Image</label>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="file" class="custom-file-input" id="image_image" name="image[image]">
+                    <label class="custom-file-label"  for="exampleInputFile">Choice File</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Image</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for image in images %}
+        <tr>
+            <td>{{ image.id }}</td>
+            <td>{{ image.title }}</td>
+            <td><img src="{{ asset('uploads') }}/images/{{ image.mage }}" ></td>
+            <td>
+                <form method="post" action="{{ path('admin_image_delete', {'id': image.id,'hid': id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ image.id) }}">
+                    <button class="btn btn-block btn-danger">Delete</button>
+                </form>
+
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
+
+

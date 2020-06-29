@@ -1,0 +1,20 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Comment New{% endblock %}
+
+{% block body  %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body">
+    <h1>Create new Comment</h1>
+
+    {{ include('admin/comment/_form.html.twig') }}
+
+    <a href="{{ path('admin_comment_index') }}">back to list</a>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
